@@ -32,7 +32,7 @@ pipeline {
         stage('Code Review') {
             steps {
                 sh'''
-                cd app
+                cd apps
                 sonar-scanner \
                     -Dsonar.projectKey=simple-apps \
                     -Dsonar.sources=. \
