@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh'''
-                cd apps
+                cd app
                 npm install
                 '''
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Testing') {
             steps {
                 sh'''
-                cd apps
+                cd app
                 npm test
                 npm run test:coverage
                 '''
@@ -32,12 +32,12 @@ pipeline {
         stage('Code Review') {
             steps {
                 sh'''
-                cd apps
+                cd app
                 sonar-scanner \
-                    -Dsonar.projectKey=simple-apps \
-                    -Dsonar.sources=. \
-                    -Dsonar.host.url=http://172.23.7.213:9000 \
-                    -Dsonar.login=sqp_d5dfa971e6ef99ea69c7f418e53b6dc5039975af
+                -Dsonar.projectKey=simple-apps \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=http://172.23.7.213:9000 \
+                -Dsonar.login=sqp_d5dfa971e6ef99ea69c7f418e53b6dc5039975af
                 '''
             }
         }
